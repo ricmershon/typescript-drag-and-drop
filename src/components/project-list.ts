@@ -5,7 +5,9 @@ import { Autobind } from '../decorators/autobind.js';
 import { projectState } from '../state/project.js';
 import ProjectItem from './project-item.js';
 
-export default class ProjectList extends Component<HTMLDivElement, HTMLElement> implements DragTarget {
+export default class ProjectList extends Component<
+    HTMLDivElement, HTMLElement
+> implements DragTarget {
     assignedProjects: Project[];
 
     constructor(private type: 'active' | 'finished') {
@@ -28,7 +30,10 @@ export default class ProjectList extends Component<HTMLDivElement, HTMLElement> 
     @Autobind
     dropHandler(event: DragEvent) {
         const projectId = event.dataTransfer!.getData('text/plain');
-        projectState.moveProject(projectId, this.type === 'active' ? ProjectStatus.Active : ProjectStatus.Finished)
+        projectState.moveProject(
+            projectId,
+            this.type === 'active' ? ProjectStatus.Active : ProjectStatus.Finished
+        );
     }
 
     @Autobind
@@ -63,7 +68,8 @@ export default class ProjectList extends Component<HTMLDivElement, HTMLElement> 
     }
 
     private renderProjects() {
-        const listEl = document.getElementById(`${this.type}-projects-list`)! as HTMLUListElement;
+        const listEl =
+            document.getElementById(`${this.type}-projects-list`)! as HTMLUListElement;
         listEl.innerHTML = '';
         for (const projectItem of this.assignedProjects) {
             new ProjectItem(this.element.querySelector('ul')!.id, projectItem);

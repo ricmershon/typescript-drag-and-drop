@@ -3,8 +3,9 @@ import Component from '../components/base-component.js';
 import { Project } from '../models/project.js';
 import { Autobind } from '../decorators/autobind.js';
 
-export default class ProjectItem extends Component<HTMLUListElement, HTMLLIElement>
-    implements Draggable {
+export default class ProjectItem extends Component<
+    HTMLUListElement, HTMLLIElement
+> implements Draggable {
     private project: Project;
 
     get persons() {
@@ -40,7 +41,9 @@ export default class ProjectItem extends Component<HTMLUListElement, HTMLLIEleme
 
     renderContent() {
         this.element.querySelector('h2')!.textContent = this.project.title;
-        this.element.querySelector('h3')!.textContent = this.persons + ' assigned';
-        this.element.querySelector('p')!.textContent = this.project.description;
+        this.element.querySelector('h3')!.textContent =
+            this.persons + ' assigned';
+        this.element.querySelector('p')!.textContent =
+            this.project.description;
     }
 }

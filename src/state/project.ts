@@ -52,11 +52,17 @@ export class ProjectState extends State<Project> {
         }
     }
 
+    /**
+     * 'slice' creates new array
+     */
     private updateListeners() {
         for (const listenerFn of this.listeners) {
-            listenerFn(this.projects.slice());  // slice will create a new array
+            listenerFn(this.projects.slice());
         };
     }
 }
 
-export const projectState = ProjectState.getInstance();    // Global state
+/**
+ * Global state
+ */
+export const projectState = ProjectState.getInstance();

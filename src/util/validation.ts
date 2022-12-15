@@ -11,7 +11,8 @@ export interface Validatable {
 export const validate = (validatableInput: Validatable) => {
     let isValid = true;
     if (validatableInput.required) {
-        isValid = isValid && validatableInput.value.toString().trim().length !== 0;
+        isValid =
+            isValid && validatableInput.value.toString().trim().length !== 0;
     }
     if (
         validatableInput.minLength != null &&
